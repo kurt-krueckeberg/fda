@@ -9,7 +9,7 @@
 #include "config.h"
 #include "utility.h"
 #include "scoped-trans.h"
-#include "fields-input-iter.h"
+#include "fields-input-iterator.h"
 #include "maude-table.h"
 #include "table-factory.h"
 #include "table-write-iterator.h"
