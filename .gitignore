@@ -1,0 +1,8 @@
+medwatch
+Debug/
+Release/
+data/
+core
+.settings
+.cproject
+.project

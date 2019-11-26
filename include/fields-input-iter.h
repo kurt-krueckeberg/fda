@@ -73,7 +73,7 @@ Lvalues are swappable.	                                           swap(a,b)
     	//TODO: Finish
     }
 
-    fields_input_iterator(std::istream& istr, const std::vector<int>& indecies) noexcept : pistr(&istr), pindexes{&indecies}
+    fields_input_iterator(std::istream& istr, const std::vector<int>& indecies) noexcept : pistr(&istr), pindexes{&indecies}, ok{true}
     {
     	auto size = pindexes->size();
         pvec =  std::make_shared<std::vector<std::string>>(size);
