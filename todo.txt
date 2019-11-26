@@ -1,0 +1,6 @@
+Added fields_input_iterator that is now used in db-code.cpp. 
+
+Testing shows that fields_input_iterator has a bug. The code seems to go into an infinite loop after reading line:
+9134908| 1.0|LZS|
+
+which is after the 1455th line of output.
