@@ -29,7 +29,7 @@ struct Config {
      {
      } 
    
-     file(file& lhs) = delete;
+     file(const file& lhs) = delete;
      
      file(Config::file&& lhs) : filename{ std::move(lhs.filename)}, table{std::move(lhs.table)}, indecies{std::move(lhs.indecies)} {}
      

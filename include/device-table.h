@@ -6,7 +6,6 @@
 //#include <iostream> // For debug only
 #include <cppconn/connection.h>
 #include <cppconn/prepared_statement.h>
-#include "text-fields.h"
 #include <vector>
 #include <unordered_map>
 

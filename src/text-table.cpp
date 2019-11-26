@@ -1,5 +1,4 @@
 #include "text-table.h"
-#include "text-fields.h"
 #include "utility.h"
 #include <algorithm>
 
@@ -57,7 +56,7 @@ bool text_table::is_new_record(const std::vector<std::string>& row)
    }
 
    // TODO: Is this of the form "1" or "1.0"?
-   string patient_seq_no {row[text_table::patient_sequence_no_index]};
+   string patient_seq_no {row[text_table::patient_sequence_no_index]};// TODO: Is the syntax correct?
 
    if (  !( text_type_code[0] == text_table::TEXT_TYPE_CODE_REQD && (patient_seq_no[0] == text_table::PATIENT_SEQ_NO_REQD || patient_seq_no.empty()) ) ) return false;
 

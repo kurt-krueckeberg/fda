@@ -1,5 +1,4 @@
 #include "device-table.h"
-#include "text-fields.h"
 
 using namespace std;
 using namespace sql;

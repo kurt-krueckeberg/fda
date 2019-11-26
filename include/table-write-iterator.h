@@ -1,7 +1,6 @@
 #ifndef table_write_iterator_h
 #define table_write_iterator_h
 
-#include "text-fields.h"
 #include "maude-table.h"
 #include <vector>
 #include <string>
@@ -16,19 +15,11 @@ class table_write_iterator {
 
   public:
     // An output iterator requires these methods:
-    /*
-      copy constructor.
-      assignment copy operator
-      destructable
-      It can be deferenced as an lvalue:  *iter = t
-      Increment
-      lvalues are swappable   
-     */
+    using iterator_category = std::output_iterator_tag;
     using difference_type   = std::ptrdiff_t; 
     using value_type = const std::vector<std::string>;
     using reference  = value_type&;
     using pointer   = value_type*;
-    using iterator_category = std::output_iterator_tag;
       
     table_write_iterator(maude_table& lhs) : tbl_ptr{&lhs}, count(0) {}
     

@@ -1,7 +1,6 @@
 #ifndef debug_write_iterator_h
 #define debug_write_iterator_h
 
-#include "text-fields.h"
 #include <string>
 #include <iostream>
 #include <memory>
