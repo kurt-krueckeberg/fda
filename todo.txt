@@ -1,4 +1,2 @@
-Added fields_input_iterator that is now used in db-code.cpp. 
-
-The fields_input_iterator works fine. The textfoi table has one less row tan the devicefoi and mdrfoi tables. Detemine which row is missing and why.
-Then test the ~/fda code without transactions and lastly with transactions. 
+The code is working. I need to change it--or double check it--so that the working table with the latest most recent patient reports is written to the database named 'maude'
+and the permanent database of all reports from patients, from 1994 up to date, is stored in a database named 'medwatch'.
