@@ -43,8 +43,7 @@ void mysql_dbcode(Connection &conn, const Config& config)
                                     table_write_iterator{*tbl_ptr},\
                                     predicate );
 
-
-        // Use thisa alternate code to debug and print text_fields input to stdout:
+        // Use this a alternate code to debug and print text_fields input to stdout:
         //
         //auto predicate = [&tbl_ptr](const vector<string>& row) { return true; };
         //
