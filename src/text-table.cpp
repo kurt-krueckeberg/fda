@@ -46,7 +46,8 @@ bool text_table::is_new_record(const std::vector<std::string>& row)
       3.       N         |  H10    | Additional Manufacturer's narrative
     */
 
-   //--string text_type_code {row[text_table::text_type_code_index]};
+   //--string text_type_code {row[text_table::text_type_code_index]} TODO: Did this cause one row to be ommitted?
+;
    const string& text_type_code = row[text_table::text_type_code_index];
 
    auto mdr_report_key = stoi(row[text_table::mdr_report_key_index]);
