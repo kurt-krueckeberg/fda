@@ -1,7 +1,6 @@
-#include <cstdlib>
 #include <iostream>
 #include <cppconn/driver.h>
-#include <cppconn/connection.h>
+
 #include "mysql_driver.h"
 
 #include "config.h"
@@ -34,10 +33,9 @@ int main(int argc, char** argv)
  
     mysql_dbcode(*conn_ptr, config);
  
- }  catch(const std::exception& e) { // note: We convert SQLExceptions to td::runtime_error whose base is std::exception
+  }  catch(const std::exception& e) { // note: We convert SQLExceptions to td::runtime_error whose base is std::exception
            
      display_exception(cout, e); 
   }
   return 0;
 }
-

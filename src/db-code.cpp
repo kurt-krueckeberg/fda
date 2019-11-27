@@ -1,7 +1,3 @@
-#include <string>
-#include <iostream>
-#include <iterator>
-
 #include <cppconn/driver.h>
 #include <cppconn/connection.h>
 #include <cppconn/exception.h>
@@ -10,12 +6,10 @@
 #include "utility.h"
 #include "scoped-trans.h"
 #include "fields-input-iterator.h"
-#include "maude-table.h"
 #include "table-factory.h"
 #include "table-write-iterator.h"
 #include "medwatch-table.h"
 #include "maude-seek-iterator.h"
-#include "debug-write-iterator.h"
 #include "db-code.h"
 
 using namespace sql;
@@ -41,7 +35,6 @@ void mysql_dbcode(Connection &conn, const Config& config)
  
         cout << "Processing " << file_entry_iter->filename << endl;
 
-        /*
         auto predicate = [&tbl_ptr](const vector<string>& row) { return tbl_ptr->is_new_record(row); };
 
 
@@ -49,9 +42,10 @@ void mysql_dbcode(Connection &conn, const Config& config)
                                     fields_input_iterator(),\
                                     table_write_iterator{*tbl_ptr},\
                                     predicate );
-        */
+
 
         // Use thisa alternate code to debug and print text_fields input to stdout:
+        /*
         auto predicate = [&tbl_ptr](const vector<string>& row) { return true; };
 
         auto output_iter = copy( fields_input_iterator(ifstr, file_entry_iter->indecies), \
@@ -64,7 +58,8 @@ void mysql_dbcode(Connection &conn, const Config& config)
             return; 
         }
  
-        cout << output_iter.get_write_count() << " total records slated to be committed to database table '" << file_entry_iter->table << "' from file " << file_entry_iter->filename << endl; 
+        cout << output_iter.get_write_count() << " total records slated to be committed to database table '" << file_entry_iter->table << "' from file " << file_entry_iter->filename << endl;
+        */
      }
  
     sql_transaction.commit();
