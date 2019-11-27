@@ -46,7 +46,8 @@ bool text_table::is_new_record(const std::vector<std::string>& row)
       3.       N         |  H10    | Additional Manufacturer's narrative
     */
 
-   string text_type_code {row[text_table::text_type_code_index]};
+   //--string text_type_code {row[text_table::text_type_code_index]};
+   const string& text_type_code = row[text_table::text_type_code_index];
 
    auto mdr_report_key = stoi(row[text_table::mdr_report_key_index]);
 
@@ -56,7 +57,8 @@ bool text_table::is_new_record(const std::vector<std::string>& row)
    }
 
    // TODO: Is this of the form "1" or "1.0"?
-   string patient_seq_no {row[text_table::patient_sequence_no_index]};// TODO: Is the syntax correct?
+   //--string patient_seq_no {row[text_table::patient_sequence_no_index]};
+   const string& patient_seq_no = row[text_table::patient_sequence_no_index];
 
    if (  !( text_type_code[0] == text_table::TEXT_TYPE_CODE_REQD && (patient_seq_no[0] == text_table::PATIENT_SEQ_NO_REQD || patient_seq_no.empty()) ) ) return false;
 

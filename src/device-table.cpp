@@ -32,8 +32,7 @@ device_table::device_table(sql::Connection& in_conn) : conn{in_conn}
       max_mdr_report_key = -1;
    }
 
-  // Create prepared statement where...
-  // values (:mdr_report_key, :device_product_code ) 
+  // Create a prepared statement where... values (:mdr_report_key, :device_product_code )
   insertStmt.reset( conn.prepareStatement( "INSERT INTO devicefoi(mdr_report_key, device_product_code) values (?, ?)") );
 }
 
