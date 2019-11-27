@@ -12,7 +12,6 @@ class table_write_iterator {
   maude_table *tbl_ptr; // base table class pointer
   int count;
   
-
   public:
     // An output iterator requires these methods:
     using iterator_category = std::output_iterator_tag;
@@ -31,7 +30,7 @@ class table_write_iterator {
 
     table_write_iterator& operator=(const table_write_iterator& lhs) = default;
         
-    table_write_iterator& operator=(reference row) // Note: reference <--> 'const std::vector<std::string>&'
+    table_write_iterator& operator=(reference row) // Note: reference <--> 'std::vector<std::string>&'
     {
        ++count; 
        
