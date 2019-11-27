@@ -1,3 +1,4 @@
 Added fields_input_iterator that is now used in db-code.cpp. 
 
-The fields_input_iterator seems to works fine. I suspect the bugg is in is_new_record logic--maybe because the table is empty. Check also the maude_seek_iterator. 
+The fields_input_iterator works fine. The textfoi table has one less row tan the devicefoi and mdrfoi tables. Detemine which row is missing and why.
+Then test the ~/fda code without transactions and lastly with transactions. 
