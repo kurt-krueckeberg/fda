@@ -20,7 +20,7 @@ void mysql_dbcode(Connection &conn, const Config& config)
   try {
       
     ScopedTransaction sql_transaction(conn);
-     
+
     table_factory tbl_factory{conn};
 
     auto file_entry_iter = config.file_list.begin();
@@ -45,21 +45,21 @@ void mysql_dbcode(Connection &conn, const Config& config)
 
 
         // Use thisa alternate code to debug and print text_fields input to stdout:
-        /*
-        auto predicate = [&tbl_ptr](const vector<string>& row) { return true; };
-
-        auto output_iter = copy( fields_input_iterator(ifstr, file_entry_iter->indecies), \
-                                 fields_input_iterator(),\
-                                 debug_write_iterator{cout} );
-
-        if (output_iter.get_write_count() == 0) {
-
-            cout << "Zero total records were written to database table '" << file_entry_iter->table << "' from file " << file_entry_iter->filename << ". Exiting." << endl; 
-            return; 
-        }
+        //
+        //auto predicate = [&tbl_ptr](const vector<string>& row) { return true; };
+        //
+        //auto output_iter = copy( fields_input_iterator(ifstr, file_entry_iter->indecies), \
+        //                         fields_input_iterator(),\
+        //                         debug_write_iterator{cout} );
+        //
+        //if (output_iter.get_write_count() == 0) {
+        //
+        //    cout << "Zero total records were written to database table '" << file_entry_iter->table << "' from file " << file_entry_iter->filename << ". Exiting." << endl; 
+        //    return; 
+        //}
  
-        cout << output_iter.get_write_count() << " total records slated to be committed to database table '" << file_entry_iter->table << "' from file " << file_entry_iter->filename << endl;
-        */
+        //cout << output_iter.get_write_count() << " total records slated to be committed to database table '" << file_entry_iter->table << "' from file " << file_entry_iter->filename << endl;
+        //
      }
  
     sql_transaction.commit();
@@ -67,7 +67,7 @@ void mysql_dbcode(Connection &conn, const Config& config)
     cout << "ScopedTransaction to tables three main tables--devicefoi, mdrfoi, textfoi--commited" << endl;
 
     sql_transaction.start();
-    
+
     cout << "medwatch_report table update transaction started." << endl;
  
     // Insert maude table data into medwatch_report table.

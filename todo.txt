@@ -1,2 +1,2 @@
-The code is working. I need to change it--or double check it--so that the working table with the latest most recent patient reports is written to the database named 'maude'
-and the permanent database of all reports from patients, from 1994 up to date, is stored in a database named 'medwatch'.
+The code is working.  The permanent table of database maude that contains all paitent reports from 1994 up to today, is stored in the 'medwatch_report' table of the 'maude' database.
+I need to separately backup the medwatch table into a separate database called 'medwatch' with one table called 'medwatch_report'.
