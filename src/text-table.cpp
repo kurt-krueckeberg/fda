@@ -5,21 +5,6 @@
 using namespace std;
 using namespace sql;
 
-bool text_table::write(const std::vector<std::string>& row) 
-{
-    auto mdr_report_key = stoi(row[text_table::mdr_report_key_index]);
-
-    // Use the fixText() utility to correct the case.
-    string& text_report = const_cast<string&>( row[text_table::text_report_index] );
-
-    ::fixText(text_report);
-
-    insertStmt->setInt(1, mdr_report_key); // double check 1
-    insertStmt->setString(2, text_report); // double check 2
-
-    return insertStmt->executeUpdate() ? true : false;
-}
-
 bool text_table::is_new_record(const std::vector<std::string>& row) 
 {
    /* 
@@ -72,3 +57,20 @@ bool text_table::is_new_record(const std::vector<std::string>& row)
  
    return true;
 }
+
+bool text_table::write(const std::vector<std::string>& row) 
+{
+    auto mdr_report_key = stoi(row[text_table::mdr_report_key_index]);
+
+    // Use the fixText() utility to correct the case.
+    string& text_report = const_cast<string&>( row[text_table::text_report_index] );
+
+    ::fixText(text_report);
+
+    insertStmt->setInt(1, mdr_report_key); // double check 1
+    insertStmt->setString(2, text_report); // double check 2
+
+    return insertStmt->executeUpdate() ? true : false;
+}
+
+
