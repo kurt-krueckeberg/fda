@@ -18,13 +18,13 @@ using namespace std;
 void mysql_dbcode(Connection &conn, const Config& config)
 {
   try {
-      
-    ScopedTransaction sql_transaction(conn);
 
     table_factory tbl_factory{conn};
 
     auto file_entry_iter = config.file_list.begin();
     
+    ScopedTransaction sql_transaction(conn);
+
     for(; file_entry_iter != config.file_list.end(); ++file_entry_iter) {
  
         // Open file and seek to the first record whose mdr_report_key > 'SELECT max(mdr_report_key) as max_mdr_report_key FROM medwatch_report'
@@ -63,14 +63,14 @@ void mysql_dbcode(Connection &conn, const Config& config)
  
     sql_transaction.commit();
       
-    cout << "ScopedTransaction to tables three main tables--devicefoi, mdrfoi, textfoi--commited" << endl;
+    cout << "ScopedTransaction to the three main temporary tables--devicefoi, mdrfoi, textfoi--commited" << endl;
 
     sql_transaction.start();
 
     cout << "medwatch_report table update transaction started." << endl;
  
     // Insert maude table data into medwatch_report table.
-    medwatch_table medwatch_tbl(conn);
+    medwatch_table medwatch_tbl{conn};
  
     medwatch_tbl.insertMaudeData();
  

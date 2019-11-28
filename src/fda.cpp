@@ -12,9 +12,6 @@ using namespace sql;
 
 int main(int argc, char** argv)
 {
-   // Check that config.xml was specified in argv[]
-  string config_file;
-
   if (argc == 1) {
  
       cout << "The the name of the configuration xml file is missing.\n";
@@ -22,12 +19,10 @@ int main(int argc, char** argv)
   } 
  
   const Config config = load_config(argv[1]);
-  
-  shared_ptr<Connection> conn_ptr{nullptr};
  
   try {  
-      
-    conn_ptr = move(shared_ptr<Connection>{ get_driver_instance()->connect(config.db.host, config.db.user, config.db.password) } );
+
+	unique_ptr<Connection> conn_ptr{ get_driver_instance()->connect(config.db.host, config.db.user, config.db.password) };
      
     conn_ptr->setSchema(config.db.dbname);  // select database
  

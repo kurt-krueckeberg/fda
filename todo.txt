@@ -1,2 +1,1 @@
-The code is working.  The permanent table of database maude that contains all paitent reports from 1994 up to today, is stored in the 'medwatch_report' table of the 'maude' database.
-I need to separately backup the medwatch table into a separate database called 'medwatch' with one table called 'medwatch_report'.
+The 'medwatch_report' table of the 'maude' database contains all patient reports from 1994 up to today. I created a separate 'medwatch' database as a backup.
