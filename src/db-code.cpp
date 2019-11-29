@@ -26,15 +26,9 @@ void mysql_dbcode(Connection &conn, const Config& config)
     
     ScopedTransaction sql_transaction(conn);
 
-    //--auto max_mdr_rkey = get_max_mdr_rkey(conn);
-
     for(; file_entry_iter != config.file_list.end(); ++file_entry_iter) {
  
         // Open file and seek to the newest rows.
-    	//--ifstream ifstr{file_entry_iter->filename};
-
-    	//--seekto_line(ifstr, max_mdr_rkey);
-
         maude_ifstream ifstr{file_entry_iter->filename, conn};
 
         // create table object.
