@@ -9,7 +9,7 @@
 #include <cppconn/exception.h>
 #include <ostream>
 #include "config.h"
-//--#include "mdr-report-key.h"
+#include "mdr-rkey.h"
 
 using namespace sql;
 using namespace std;

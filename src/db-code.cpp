@@ -26,6 +26,8 @@ void mysql_dbcode(Connection &conn, const Config& config)
     
     ScopedTransaction sql_transaction(conn);
 
+    auto max_mdr_rkey = get_max_mdr_rkey(conn);
+
     for(; file_entry_iter != config.file_list.end(); ++file_entry_iter) {
  
         // create table object.
@@ -36,9 +38,9 @@ void mysql_dbcode(Connection &conn, const Config& config)
         auto predicate = [&tbl_ptr](const vector<string>& row) { return tbl_ptr->is_new_record(row); };
 
         // Open file.
-        fstream ifstr{file_entry_iter->filename};
+        ifstream ifstr{file_entry_iter->filename};
 
-        auto output_iter = copy_if( fields_input_iterator(ifstr, conn, file_entry_iter->indecies), \
+        auto output_iter = copy_if( fields_input_iterator(ifstr, max_mdr_rkey, file_entry_iter->indecies), \
                                     fields_input_iterator(),\
                                     table_write_iterator{*tbl_ptr},\
                                     predicate );
