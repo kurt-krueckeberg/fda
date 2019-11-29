@@ -9,7 +9,7 @@
 #include "table-write-iterator.h"
 #include "medwatch-table.h"
 #include "db-code.h"
-#include "maude-ifstream.h"
+//--#include "maude-ifstream.h"
 
 #include <fstream>
 
@@ -29,7 +29,7 @@ void mysql_dbcode(Connection &conn, const Config& config)
     for(; file_entry_iter != config.file_list.end(); ++file_entry_iter) {
  
         // Open file and seek to the newest rows.
-        maude_ifstream ifstr{file_entry_iter->filename, conn};
+        fstream ifstr{file_entry_iter->filename};
 
         // create table object.
         auto tbl_ptr { tbl_factory.createTable(*file_entry_iter) };
@@ -39,27 +39,30 @@ void mysql_dbcode(Connection &conn, const Config& config)
         auto predicate = [&tbl_ptr](const vector<string>& row) { return tbl_ptr->is_new_record(row); };
 
 
-        auto output_iter = copy_if( fields_input_iterator(ifstr, file_entry_iter->indecies), \
+        auto output_iter = copy_if( fields_input_iterator(ifstr, conn, file_entry_iter->indecies), \
                                     fields_input_iterator(),\
                                     table_write_iterator{*tbl_ptr},\
                                     predicate );
 
-        // Use this a alternate code to debug and print text_fields input to stdout:
-        //
-        //auto predicate = [&tbl_ptr](const vector<string>& row) { return true; };
-        //
-        //auto output_iter = copy( fields_input_iterator(ifstr, file_entry_iter->indecies), \
-        //                         fields_input_iterator(),\
-        //                         debug_write_iterator{cout} );
-        //
-        //if (output_iter.get_write_count() == 0) {
-        //
-        //    cout << "Zero total records were written to database table '" << file_entry_iter->table << "' from file " << file_entry_iter->filename << ". Exiting." << endl; 
-        //    return; 
-        //}
+        /*
+         
+            Use this a alternate code to debug and print text_fields input to stdout:
+        
+        auto predicate = [&tbl_ptr](const vector<string>& row) { return true; };
+        
+        auto output_iter = copy( fields_input_iterator(ifstr, file_entry_iter->indecies), \
+                                 fields_input_iterator(),\
+                                 debug_write_iterator{cout} );
+        
+        if (output_iter.get_write_count() == 0) {
+        
+            cout << "Zero total records were written to database table '" << file_entry_iter->table << "' from file " << file_entry_iter->filename << ". Exiting." << endl; 
+            return; 
+        }
  
-        //cout << output_iter.get_write_count() << " total records slated to be committed to database table '" << file_entry_iter->table << "' from file " << file_entry_iter->filename << endl;
-        //
+        cout << output_iter.get_write_count() << " total records slated to be committed to database table '" << file_entry_iter->table << "' from file " << file_entry_iter->filename << endl;
+         */
+       
      }
  
     sql_transaction.commit();

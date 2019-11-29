@@ -7,6 +7,8 @@
 #include <memory>
 #include <iterator>
 
+#include <cppconn/connection.h>
+
 // Input iterator that extracts an exported maude table's columns/fields into a vector, row-by-row
 // as the exported table is read line-by-line.
 class fields_input_iterator  {
@@ -31,8 +33,15 @@ class fields_input_iterator  {
       }
   }
 
+  static unsigned int get_max_mdr_rkey(sql::Connection& conn) noexcept;
+
+  static bool b_max_found;
+  static unsigned long max_mdr_rkey;
+
+  void advance(sql::Connection& conn); 
 
   public:
+
   using iterator_category = std::input_iterator_tag;
   using value_type        = std::vector<std::string>;
   using difference_type   = int;
@@ -68,13 +77,13 @@ Lvalues are swappable.	                                           swap(a,b)
 
 */
 
-    fields_input_iterator() : pistr{nullptr}, ok{false}, pindexes{nullptr}
+    fields_input_iterator() : pistr{nullptr}, pindexes{nullptr}, ok{false}
     {
-    	//TODO: Finish
     }
 
-    fields_input_iterator(std::istream& istr, const std::vector<int>& indecies) noexcept : pistr(&istr), pindexes{&indecies}, ok{true}
+    fields_input_iterator(std::istream& istr, sql::Connection& conn, const std::vector<int>& indecies) noexcept : pistr(&istr), pindexes{&indecies}, ok{true}
     {
+        advance(conn);
     	auto size = pindexes->size();
         pvec =  std::make_shared<std::vector<std::string>>(size);
         read();  

@@ -13,14 +13,13 @@ template<char TOKEN='|'> class token_iterator {
     using value_type = std::pair<const char *, int>;
     using reference = value_type&; 
     
+    const char token;
     bool ok;
   
     const std::string *const pline;
     
     std::string::size_type  pos;
     std::string::size_type  prev_pos;
-
-    const char token;
 
     std::string_view value;
 
@@ -58,7 +57,7 @@ template<char TOKEN='|'> class token_iterator {
        prev_pos = pos = 0;
    } 
 
-   explicit token_iterator(const std::string& in_line) : pline{&in_line}, token{TOKEN}, ok{true}
+   explicit token_iterator(const std::string& in_line) : token{TOKEN}, ok{true}, pline{&in_line}
    {
       prev_pos = pos = 0;
       fetch_field(true);  
