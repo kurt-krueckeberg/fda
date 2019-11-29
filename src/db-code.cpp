@@ -28,9 +28,6 @@ void mysql_dbcode(Connection &conn, const Config& config)
 
     for(; file_entry_iter != config.file_list.end(); ++file_entry_iter) {
  
-        // Open file and seek to the newest rows.
-        fstream ifstr{file_entry_iter->filename};
-
         // create table object.
         auto tbl_ptr { tbl_factory.createTable(*file_entry_iter) };
  
@@ -38,6 +35,8 @@ void mysql_dbcode(Connection &conn, const Config& config)
 
         auto predicate = [&tbl_ptr](const vector<string>& row) { return tbl_ptr->is_new_record(row); };
 
+        // Open file.
+        fstream ifstr{file_entry_iter->filename};
 
         auto output_iter = copy_if( fields_input_iterator(ifstr, conn, file_entry_iter->indecies), \
                                     fields_input_iterator(),\
