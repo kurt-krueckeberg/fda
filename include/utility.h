@@ -9,7 +9,7 @@
 #include <cppconn/exception.h>
 #include <ostream>
 #include "config.h"
-#include "mdr-report-key.h"
+//--#include "mdr-report-key.h"
 
 using namespace sql;
 using namespace std;
@@ -30,7 +30,7 @@ unsigned int get_max_mdr_rkey(sql::Connection& conn) noexcept;
  * If the medwatch_report table is empty, there will be no advancement.
  * 
  */
-
+/*
 inline void seekto_line(std::istream& istr, unsigned int max_mdr_rkey) noexcept
 {
    // Advance until predicate is true (and return iterator at that point) or advance to the last record (and return end iterator, 2nd parameter).
@@ -43,7 +43,7 @@ inline void seekto_line(std::istream& istr, unsigned int max_mdr_rkey) noexcept
 
    return;
 }
-
+*/
 /*
  input: maude .txt date in mm/dd/yyyy format
  output: mysql date

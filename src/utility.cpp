@@ -50,6 +50,7 @@ vector<int> fetch_all_DeviceMdrReportKeys(sql::Connection& conn) noexcept
   return mdr_rkeys;
 }
 
+/*
 unsigned int get_max_mdr_rkey(Connection& conn) noexcept
 {
    unsigned max_mdr_rkey = 0;
@@ -70,7 +71,9 @@ unsigned int get_max_mdr_rkey(Connection& conn) noexcept
       max_mdr_rkey = rs->getUInt64(1);
    } 
    return max_mdr_rkey;
- }
+}
+*/
+
 /*
  input: maude .txt date in mm/dd/yyyy format
  output: mysql date

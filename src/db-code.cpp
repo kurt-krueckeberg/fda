@@ -9,6 +9,7 @@
 #include "table-write-iterator.h"
 #include "medwatch-table.h"
 #include "db-code.h"
+#include "maude-ifstream.h"
 
 #include <fstream>
 
@@ -25,15 +26,17 @@ void mysql_dbcode(Connection &conn, const Config& config)
     
     ScopedTransaction sql_transaction(conn);
 
-    auto max_mdr_rkey = get_max_mdr_rkey(conn);
+    //--auto max_mdr_rkey = get_max_mdr_rkey(conn);
 
     for(; file_entry_iter != config.file_list.end(); ++file_entry_iter) {
  
         // Open file and seek to the newest rows.
-    	ifstream ifstr{file_entry_iter->filename};
+    	//--ifstream ifstr{file_entry_iter->filename};
 
-    	seekto_line(ifstr, max_mdr_rkey);
-       
+    	//--seekto_line(ifstr, max_mdr_rkey);
+
+        maude_ifstream ifstr{file_entry_iter->filename, conn};
+
         // create table object.
         auto tbl_ptr { tbl_factory.createTable(*file_entry_iter) };
  

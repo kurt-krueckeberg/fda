@@ -1,6 +1,7 @@
 #include <istream>
 #include <string>
-#include "mdr-report-key.h"
+
+#include "../include/mdr-rkey.h"
 
 using namespace std;
 
