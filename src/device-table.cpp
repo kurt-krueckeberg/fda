@@ -3,7 +3,7 @@
 using namespace std;
 using namespace sql;
 
-static const std::string max_string{ "SELECT max(mdr_report_key) as max_mdr_report_key FROM medwatch_report"};
+static const std::string max_string{ "SELECT max(mdr_rkey) as max_mdr_rkey FROM medwatch_report"};
 
 string device_table::EXCIMER_LASER_SYSTEM{"LZS"};
 string device_table::KERATOME{"HNO"};
@@ -11,7 +11,7 @@ string device_table::ONE_DOT_0{"1.0"};
 
 device_table::device_table(sql::Connection& in_conn) : conn{in_conn}
 {
-   // If the table is empty, then set device_max_mdr_report_key to -1.
+   // If the table is empty, then set device_max_mdr_rkey to -1.
    unique_ptr<Statement> stmt { conn.createStatement() };
 
    // Are there any medwatch_report records...
@@ -19,21 +19,21 @@ device_table::device_table(sql::Connection& in_conn) : conn{in_conn}
    
    rs->first();
 
-   if (auto count = (int) rs->getInt(1); count != 0) { //...if yes, get the max(mdr_report_key)
+   if (auto count = (int) rs->getInt(1); count != 0) { //...if yes, get the max(mdr_rkey)
 
-      rs.reset( move( stmt->executeQuery("SELECT max(mdr_report_key) as max_mdr_report_key FROM medwatch_report") ));
+      rs.reset( move( stmt->executeQuery("SELECT max(mdr_rkey) as max_mdr_rkey FROM medwatch_report") ));
 
       rs->first();
 
-      max_mdr_report_key = rs->getUInt64(1);
+      max_mdr_rkey = rs->getUInt64(1);
 
    } else { 
 
-      max_mdr_report_key = -1;
+      max_mdr_rkey = -1;
    }
 
-  // Create a prepared statement where... values (:mdr_report_key, :device_product_code )
-  insertStmt.reset( conn.prepareStatement( "INSERT INTO devicefoi(mdr_report_key, device_product_code) values (?, ?)") );
+  // Create a prepared statement where... values (:mdr_rkey, :device_product_code )
+  insertStmt.reset( conn.prepareStatement( "INSERT INTO devicefoi(mdr_rkey, device_product_code) values (?, ?)") );
 }
 
 
@@ -56,14 +56,14 @@ bool device_table::is_new_record(const std::vector<std::string>& row)
    }
 */
     
-   // Is it a new mdr_report_key, greater than the prior max value in the table before we ran this code?
-   auto mdr_report_key = stoi(row[device_table::mdr_report_key_index]);
+   // Is it a new mdr_rkey, greater than the prior max value in the table before we ran this code?
+   auto mdr_rkey = stoi(row[device_table::mdr_rkey_index]);
 
 // See: http://thispointer.com/unordered_map-usage-tutorial-and-example/
 
-   auto iter = mdr_key_code_map.find(mdr_report_key);
+   auto iter = mdr_key_code_map.find(mdr_rkey);
 
-   if (iter != mdr_key_code_map.cend()) { // If the mdr_report_key is already in the hash table...
+   if (iter != mdr_key_code_map.cend()) { // If the mdr_rkey is already in the hash table...
 
       // ...is the new product_report_code, too?
       auto& vec = iter->second;
@@ -77,15 +77,15 @@ bool device_table::is_new_record(const std::vector<std::string>& row)
         /* 
          Debug code:
   
-         cout << "This is a duplicate mdr_report_key/product_code pair: " << "{ " << mdr_report_key << ", " << row[device_table::device_report_product_code_index] << " }" << endl;
+         cout << "This is a duplicate mdr_rkey/product_code pair: " << "{ " << mdr_rkey << ", " << row[device_table::device_report_product_code_index] << " }" << endl;
 
          */  
          return false;
       }
 
-   } else { // If mdr_report_key is not in hash table, add it
+   } else { // If mdr_rkey is not in hash table, add it
 
-      auto& vec = mdr_key_code_map[mdr_report_key];
+      auto& vec = mdr_key_code_map[mdr_rkey];
       vec.push_back( row[device_table::device_report_product_code_index]);         
    }   
 
@@ -94,9 +94,9 @@ bool device_table::is_new_record(const std::vector<std::string>& row)
 
 bool device_table::write(const std::vector<std::string>& row) 
 {
-    auto mdr_report_key = stoi(row[device_table::mdr_report_key_index]);
+    auto mdr_rkey = stoi(row[device_table::mdr_rkey_index]);
     
-    insertStmt->setInt(1, mdr_report_key); 
+    insertStmt->setInt(1, mdr_rkey); 
     
     insertStmt->setString(2, row[device_table::device_report_product_code_index]);
    

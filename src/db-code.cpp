@@ -1,4 +1,3 @@
-#include <cppconn/driver.h>
 #include <cppconn/connection.h>
 #include <cppconn/exception.h>
 
@@ -9,8 +8,9 @@
 #include "table-factory.h"
 #include "table-write-iterator.h"
 #include "medwatch-table.h"
-#include "maude-seek-iterator.h"
 #include "db-code.h"
+
+#include <fstream>
 
 using namespace sql;
 using namespace std;
@@ -25,10 +25,14 @@ void mysql_dbcode(Connection &conn, const Config& config)
     
     ScopedTransaction sql_transaction(conn);
 
+    auto max_mdr_rkey = get_max_mdr_rkey(conn);
+
     for(; file_entry_iter != config.file_list.end(); ++file_entry_iter) {
  
-        // Open file and seek to the first record whose mdr_report_key > 'SELECT max(mdr_report_key) as max_mdr_report_key FROM medwatch_report'
-        maude_seek_iterator ifstr{file_entry_iter->filename, conn};
+        // Open file and seek to the newest rows.
+    	ifstream ifstr{file_entry_iter->filename};
+
+    	seekto_line(ifstr, max_mdr_rkey);
        
         // create table object.
         auto tbl_ptr { tbl_factory.createTable(*file_entry_iter) };

@@ -9,21 +9,21 @@
 <files>
     <file filename="data/device-all.txt" table="devicefoi">
     <indecies>
-        <index fieldName="mdr_report_key">0</index>
+        <index fieldName="mdr_rkey">0</index>
         <index fieldName="device_sequence_no">4</index>
         <index fieldName="device_report_product_code">25</index>
     </indecies>
     </file>
     <file filename="data/mdr-all.txt" table="mdrfoi">
     <indecies>
-        <index fieldName="mdr_report_key">0</index>
+        <index fieldName="mdr_rkey">0</index>
         <index fieldName="report_source_code">3</index>
         <index fieldName="date_received">7</index>
     </indecies>
     </file>
     <file filename="data/text-all.txt"  table="textfoi">
     <indecies>
-        <index fieldName="mdr_report_key">0</index>
+        <index fieldName="mdr_rkey">0</index>
         <index fieldName="text_key">1</index>
         <index fieldName="text_type_code">2</index>
 	<index fieldName="patient_sequence_no">3</index>

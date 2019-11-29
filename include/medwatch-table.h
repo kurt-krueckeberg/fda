@@ -21,7 +21,7 @@ class medwatch_table {
    std::unique_ptr<sql::PreparedStatement>  insert_stmt;
 
    // bound parameters for prepared insert PDOStatement
-   int  mdr_report_key;
+   int  mdr_rkey;
 
    std::string  text_report;
    std::string  date_received;

@@ -10,17 +10,17 @@ using namespace std;
 using namespace sql;
 
 // statics
-string  medwatch_table::select_query {R"(SELECT textfoi.mdr_report_key, textfoi.text_report, mdrfoi.date_received, mdrfoi.report_source_code 
-FROM textfoi INNER JOIN mdrfoi on textfoi.mdr_report_key=mdrfoi.mdr_report_key LEFT OUTER JOIN  medwatch_report  
-  ON textfoi.mdr_report_key=medwatch_report.mdr_report_key 
- WHERE medwatch_report.mdr_report_key IS NULL ORDER BY textfoi.mdr_report_key)"};
+string  medwatch_table::select_query {R"(SELECT textfoi.mdr_rkey, textfoi.text_report, mdrfoi.date_received, mdrfoi.report_source_code 
+FROM textfoi INNER JOIN mdrfoi on textfoi.mdr_rkey=mdrfoi.mdr_rkey LEFT OUTER JOIN  medwatch_report  
+  ON textfoi.mdr_rkey=medwatch_report.mdr_rkey 
+ WHERE medwatch_report.mdr_rkey IS NULL ORDER BY textfoi.mdr_rkey)"};
 
-string medwatch_table::insert_query { "INSERT INTO medwatch_report(mdr_report_key, text_report, date_received, report_source_code, word_cnt) values (?, ?, ?, ?, ?)" };
+string medwatch_table::insert_query { "INSERT INTO medwatch_report(mdr_rkey, text_report, date_received, report_source_code, word_cnt) values (?, ?, ?, ?, ?)" };
 
 void medwatch_table::retrieve_and_bind(sql::ResultSet& res) noexcept
 {
    // retrieve ResultSet values from LEFT OUTER JOIN...
-   mdr_report_key = res.getUInt64(1); 
+   mdr_rkey = res.getUInt64(1); 
    
    text_report =  res.getString(2);
    
@@ -29,7 +29,7 @@ void medwatch_table::retrieve_and_bind(sql::ResultSet& res) noexcept
    report_source_code = res.getString(4);
        
    // bind them to insert statement
-   insert_stmt->setUInt64(1, mdr_report_key); 
+   insert_stmt->setUInt64(1, mdr_rkey); 
 
    insert_stmt->setString(2, text_report); 
 

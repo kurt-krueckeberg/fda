@@ -1,1 +1,1 @@
-The 'medwatch_report' table of the 'maude' database contains all patient reports from 1994 up to today. I created a separate 'medwatch' database as a backup.
+Simplifythe code that seeks to new records: more encapsulation.

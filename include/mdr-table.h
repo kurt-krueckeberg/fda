@@ -13,12 +13,12 @@ class mdr_table : public maude_table {
   sql::Connection&  conn;
   std::unique_ptr<sql::PreparedStatement>  insertStmt;
 
-  static const int mdr_report_key_index = 0;
+  static const int mdr_rkey_index = 0;
   static const int report_source_code_index = 1;
   static const int date_received_index = 2;
 
-  int prior_mdr_report_key; // for debugging, methinks.
-  std::vector<int> mdr_report_keys; // sorted vector
+  int prior_mdr_rkey; // for debugging, methinks.
+  std::vector<int> mdr_rkeys; // sorted vector
 
  public:
 

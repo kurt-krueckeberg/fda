@@ -16,11 +16,11 @@ class device_table : public maude_table {
 
   std::unique_ptr<sql::PreparedStatement>  insertStmt;
 
-  int max_mdr_report_key;
+  int max_mdr_rkey;
 
   std::unordered_map<unsigned, std::vector<std::string>> mdr_key_code_map; 
 
-  static const int mdr_report_key_index = 0;
+  static const int mdr_rkey_index = 0;
   static const int device_report_product_code_index = 2;
   static const int device_sequence_no_index = 1;
   static const std::string max_string; 

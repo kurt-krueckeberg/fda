@@ -22,7 +22,7 @@ int main(int argc, char** argv)
  
   try {  
 
-	unique_ptr<Connection> conn_ptr{ get_driver_instance()->connect(config.db.host, config.db.user, config.db.password) };
+    unique_ptr<Connection> conn_ptr{ get_driver_instance()->connect(config.db.host, config.db.user, config.db.password) };
      
     conn_ptr->setSchema(config.db.dbname);  // select database
  
