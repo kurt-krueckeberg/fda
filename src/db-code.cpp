@@ -35,19 +35,20 @@ void mysql_dbcode(Connection &conn, const Config& config)
  
         cout << "Processing " << file_entry_iter->filename << endl;
 
-        auto predicate = [&tbl_ptr](const vector<string>& row) { return tbl_ptr->is_new_record(row); };
-
         // Open file.
         ifstream ifstr{file_entry_iter->filename};
 
         auto output_iter = copy_if( fields_input_iterator(ifstr, max_mdr_rkey, file_entry_iter->indecies), \
                                     fields_input_iterator(),\
                                     table_write_iterator{*tbl_ptr},\
-                                    predicate );
+                                    [&tbl_ptr](const vector<string>& row) 
+                                              {
+                                                return tbl_ptr->is_new_record(row); 
+                                              }
+                                   );
 
         /*
-         
-            Use this a alternate code to debug and print text_fields input to stdout:
+        Use this a alternate code to debug and print text_fields input to stdout:
         
         auto predicate = [&tbl_ptr](const vector<string>& row) { return true; };
         
@@ -62,9 +63,8 @@ void mysql_dbcode(Connection &conn, const Config& config)
         }
  
         cout << output_iter.get_write_count() << " total records slated to be committed to database table '" << file_entry_iter->table << "' from file " << file_entry_iter->filename << endl;
-         */
-       
-     }
+        */
+    }
  
     sql_transaction.commit();
       
