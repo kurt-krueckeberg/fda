@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `mdrfoi` (
 
 CREATE TABLE IF NOT EXISTS `textfoi` (
   mdr_report_key int(11) unsigned NOT NULL,
-  text_report TEXT,
+  text_report TEXT NOT NULL,
   FOREIGN KEY (mdr_report_key) REFERENCES devicefoi (mdr_report_key),
   PRIMARY KEY (mdr_report_key)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
