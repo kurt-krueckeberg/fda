@@ -10,14 +10,15 @@
 using namespace std;
 using namespace sql;
 
+
 int main(int argc, char** argv)
 {
   if (argc == 1) {
  
       cout << "The the name of the configuration xml file is missing.\n";
       return 0;
-  } 
- 
+  }
+
   const Config config = load_config(argv[1]);
  
   try {  

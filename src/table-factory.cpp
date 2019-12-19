@@ -33,4 +33,6 @@ shared_ptr<maude_table>  table_factory::createTable(const Config::file& file) co
            break;
 
   }
+
+  return 
 }
