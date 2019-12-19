@@ -41,7 +41,8 @@ shared_ptr<maude_table>  table_factory::createTable(const Config::file& file) co
 {
   char c = static_cast<int>(file.table[0]); // just use first character's decimal value.
 
-  auto ptr = [&, *this]()->shared_ptr<maude_table> {
+  // create lambda, and immediately invoke it passing this->conn, returning the result
+  return [&](sql::Connection& conn)->shared_ptr<maude_table> {
 
       switch(c) {
     
@@ -61,7 +62,6 @@ shared_ptr<maude_table>  table_factory::createTable(const Config::file& file) co
              throw logic_error("In table_factory::createTable(const Config::file&). Unknown case ile::table[0] ");
                break;
       }
-  }(); // create and invoke lambda.
+  }(conn);
 
-  return ptr; 
 }
