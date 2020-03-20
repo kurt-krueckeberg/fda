@@ -63,7 +63,12 @@ function rename_lowercase(string $dir, string $ext)
  */
 function change_extension(&$files) : \RecursiveIteratorIterator
 {
-  array_walk_recursive ($files, function(&$fname) {  $ext_index = strpos($fname, ".");  $fname = substr_replace($fname, ".txt", $ext_index);} );
+  array_walk_recursive ($files, function(&$fname) {
+     $ext_index = strpos($fname, ".");
+     $fname = substr_replace($fname, ".txt", $ext_index);} 
+    );
+
+
   return  new \RecursiveIteratorIterator(new \RecursiveArrayIterator($files) );
 }  
 
@@ -168,15 +173,13 @@ function concatenate(array $files, string $ext, string $dir) : array
      
         $output = "$dir/" . $key . "-all.txt"; 
         
-       
-        
         $cmd .= " >> $output";
         
         exec($cmd);
-      
      } 
      
      array_push($output_files, $output);
+
      echo "\n$output created.\n";
   }
   return $output_files;

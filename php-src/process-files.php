@@ -1,13 +1,10 @@
 <?php
-//--require_once "config.php"; 
 require_once "utilities.php";
 
 $config['files'] = array('foidev2018.zip', 'foidevadd.zip', 'foidev.zip', 'foitext2018.zip', 'foitextadd.zip', 'mdrfoiadd.zip', 'mdrfoi.zip');
 
 $recurs_iter = new \RecursiveIteratorIterator(new \RecursiveArrayIterator($config['files']) );
 
-//--download_files("https://www.accessdata.fda.gov/MAUDE/ftparea/", $download_dir, $recurs_iter);
- 
 unzip_files($config['download-dir'], $recurs_iter);
 
 rename_lowercase($download_dir, "txt");

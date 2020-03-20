@@ -7,7 +7,7 @@ $device = array("foidev.zip", "foidevadd.zip");
 $mdr   =  array("mdrfoi.zip", "mdrfoiadd.zip" );
 $text  =  array("foitext.zip", "foitextadd.zip");
 
-$config['files'] = array('device' => $device, 'mdr' => $mdr, 'text' => $text);
+$config['files_map'] = array('device' => $device, 'mdr' => $mdr, 'text' => $text);
 
 $config['download-dir'] = "../data";
 ?>
