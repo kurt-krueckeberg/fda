@@ -31,23 +31,11 @@ Config load_config(const string& file_name)
    auto database_node = root_node->first_node("database");
 
    // Assign the database parameter members of config. 
-   std::pair<const char *, std::string&> db_params[] = { {"host", config.db.host}, {"dbname", config.db.dbname}, {"user", config.db.user}, {"password", config.db.password}};   
+   static std::pair<const char *, std::string&> db_params[] = { {"host", config.db.host}, {"dbname", config.db.dbname}, {"user", config.db.user}, {"password", config.db.password}};   
 
-   for(auto& x : db_params) {
-
+   for(auto& x : db_params) 
        x.second = move(database_node->first_node(x.first)->value()); 
-   }
 
-/* Old code:
-   config.db.host = move(database_node->first_node("host")->value()); 
-
-   config.db.dbname = move(database_node->first_node("dbname")->value());
-
-   config.db.user = move(database_node->first_node("user")->value());
-
-   config.db.password = move(database_node->first_node("password")->value());
-*/
-   
    auto files_node = root_node->first_node("files");
    
    for ( auto curfile_node = files_node->first_node("file"); curfile_node != nullptr; curfile_node = curfile_node->next_sibling() ) {
