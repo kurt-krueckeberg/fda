@@ -13,7 +13,6 @@ Config load_config(const string& file_name)
         
    /*
  rapidxml HOWTOES:
-
    https://gist.github.com/JSchaenzle/2726944
    http://stackoverflow.com/questions/2808022/how-to-parse-the-xml-file-in-rapidxml
    http://www.gamedev.net/topic/666611-reading-xml-files-with-rapidxml/
@@ -39,7 +38,7 @@ Config load_config(const string& file_name)
        x.second = move(database_node->first_node(x.first)->value()); 
    }
 
-/*
+/* Old code:
    config.db.host = move(database_node->first_node("host")->value()); 
 
    config.db.dbname = move(database_node->first_node("dbname")->value());
