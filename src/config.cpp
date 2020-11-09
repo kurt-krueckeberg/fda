@@ -2,15 +2,16 @@
 #include "config.h"
 #include <memory>
 #include <string>
+#include <utility>
 #include <exception>
 
 using namespace rapidxml;
 using namespace std;
 
-const Config load_config(const string& file_name) 
+Config load_config(const string& file_name) 
 {
-  
-/*
+        
+   /*
  rapidxml HOWTOES:
 
    https://gist.github.com/JSchaenzle/2726944
@@ -30,6 +31,15 @@ const Config load_config(const string& file_name)
 
    auto database_node = root_node->first_node("database");
 
+   // Assign the database parameter members of config. 
+   std::pair<const char *, std::string&> db_params[] = { {"host", config.db.host}, {"dbname", config.db.dbname}, {"user", config.db.user}, {"password", config.db.password}};   
+
+   for(auto& x : db_params) {
+
+       x.second = move(database_node->first_node(x.first)->value()); 
+   }
+
+/*
    config.db.host = move(database_node->first_node("host")->value()); 
 
    config.db.dbname = move(database_node->first_node("dbname")->value());
@@ -37,6 +47,7 @@ const Config load_config(const string& file_name)
    config.db.user = move(database_node->first_node("user")->value());
 
    config.db.password = move(database_node->first_node("password")->value());
+*/
    
    auto files_node = root_node->first_node("files");
    

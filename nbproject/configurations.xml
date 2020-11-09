@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="100">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <logicalFolder name="include" displayName="include" projectFiles="true">
+        <itemPath>include/config.h</itemPath>
+        <itemPath>include/db-code.h</itemPath>
+        <itemPath>include/debug-write-iterator.h</itemPath>
+        <itemPath>include/device-table.h</itemPath>
+        <itemPath>include/fields-input-iterator.h</itemPath>
+        <itemPath>include/input_validator.h</itemPath>
+        <itemPath>include/maude-ifstream.h</itemPath>
+        <itemPath>include/maude-table.h</itemPath>
+        <itemPath>include/mdr-rkey.h</itemPath>
+        <itemPath>include/mdr-table.h</itemPath>
+        <itemPath>include/medwatch-table.h</itemPath>
+        <itemPath>include/regex-callback.h</itemPath>
+        <itemPath>include/scoped-trans.h</itemPath>
+        <itemPath>include/table-factory.h</itemPath>
+        <itemPath>include/table-write-iterator.h</itemPath>
+        <itemPath>include/text-table.h</itemPath>
+        <itemPath>include/token-iter.h</itemPath>
+        <itemPath>include/utility.h</itemPath>
+      </logicalFolder>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <logicalFolder name="src" displayName="src" projectFiles="true">
+        <itemPath>src/config.cpp</itemPath>
+        <itemPath>src/db-code.cpp</itemPath>
+        <itemPath>src/device-table.cpp</itemPath>
+        <itemPath>src/fda.cpp</itemPath>
+        <itemPath>src/fields-input-iterator.cpp</itemPath>
+        <itemPath>src/input_validator.cpp</itemPath>
+        <itemPath>src/maude-ifstream.cpp</itemPath>
+        <itemPath>src/mdr-report-key.cpp</itemPath>
+        <itemPath>src/mdr-table.cpp</itemPath>
+        <itemPath>src/medwatch-table.cpp</itemPath>
+        <itemPath>src/table-factory.cpp</itemPath>
+        <itemPath>src/text-table.cpp</itemPath>
+        <itemPath>src/utility.cpp</itemPath>
+      </logicalFolder>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceRootList>
+    <Elem>include</Elem>
+    <Elem>src</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <incDir>
+            <pElem>include</pElem>
+          </incDir>
+          <commandLine>-std=c++20</commandLine>
+        </ccTool>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerLibLibItem>mysqlcppconn</linkerLibLibItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+      <item path="include/config.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/db-code.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/debug-write-iterator.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/device-table.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/fields-input-iterator.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/input_validator.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/maude-ifstream.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/maude-table.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/mdr-rkey.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/mdr-table.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/medwatch-table.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/regex-callback.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/scoped-trans.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/table-factory.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/table-write-iterator.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/text-table.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/token-iter.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/utility.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/config.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/db-code.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/device-table.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/fda.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/fields-input-iterator.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/input_validator.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/maude-ifstream.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/mdr-report-key.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/mdr-table.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/medwatch-table.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/table-factory.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/text-table.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/utility.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerLibLibItem>mysqlcppconn</linkerLibLibItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+      <item path="include/config.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/db-code.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/debug-write-iterator.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/device-table.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/fields-input-iterator.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/input_validator.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/maude-ifstream.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/maude-table.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/mdr-rkey.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/mdr-table.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/medwatch-table.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/regex-callback.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/scoped-trans.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/table-factory.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/table-write-iterator.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/text-table.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/token-iter.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/utility.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/config.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/db-code.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/device-table.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/fda.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/fields-input-iterator.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/input_validator.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/maude-ifstream.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/mdr-report-key.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/mdr-table.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/medwatch-table.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/table-factory.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/text-table.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/utility.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

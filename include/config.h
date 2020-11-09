@@ -46,5 +46,5 @@ struct Config {
     std::list<file> file_list;
 };
 
-const Config load_config(const std::string& file_name);
+Config load_config(const std::string& file_name);
 #endif

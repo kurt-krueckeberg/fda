@@ -6,3 +6,5 @@ core
 .settings
 .cproject
 .project
+/build/
+/dist/
