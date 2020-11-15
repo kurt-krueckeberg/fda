@@ -27,6 +27,7 @@ class fields_input_iterator  {
 
   void read() noexcept
   {
+      // If pistr or *pistr are nullptr, we are done iterating. 
       ok = (pistr && *pistr) ? true : false;
 
       if (ok) {
@@ -81,8 +82,11 @@ Lvalues are swappable.	                                           swap(a,b)
     fields_input_iterator(std::istream& istr, unsigned int max_mdr_rkey, const std::vector<int>& indecies) noexcept : pistr(&istr), pindexes{&indecies}, ok{true}
     {
         advance(max_mdr_rkey);
+
     	auto size = pindexes->size();
+
         pvec =  std::make_shared<std::vector<std::string>>(size);
+
         read();  
     }
 

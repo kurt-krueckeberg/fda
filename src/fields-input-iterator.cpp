@@ -27,7 +27,7 @@ void fields_input_iterator::read_() noexcept
         
       if (cur_field_index == *indecies_iter) { // If the next field equals the current index, save the field
   
-         *vec_iter = *field_iter; // *iter returns: std::string_view.
+         *vec_iter = *field_iter; // Insert next string in vector. *iter returns: std::string_view. 
         ++vec_iter;
   
          if (++indecies_iter == pindexes->cend()) break; // If we have all the fields, stop fetching.
