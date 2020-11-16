@@ -19,7 +19,7 @@ class fields_input_iterator  {
 
   const std::vector<int> *pindexes;
 
-  std::shared_ptr< std::vector<std::string> > pvec;
+  std::shared_ptr<std::vector<std::string>> pvec;
 
   bool ok;
 
@@ -140,7 +140,7 @@ inline void fields_input_iterator::advance(unsigned int max_mdr_rkey)
 
 {
    // Advance until predicate is true.
-   auto predicate = [=] (unsigned input_mdr)
+   auto predicate = [=] (const unsigned& input_mdr)
                     { 
                        return input_mdr > max_mdr_rkey;
                     };
