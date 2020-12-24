@@ -47,8 +47,8 @@ class fields_input_iterator  {
   using pointer           = std::vector<std::string> *;
 
 
-/*;
-Properties of an  Input Iterator                          Valid Expressions Required of an Input Iterator
+/*
+STL Required properties of an Input Iterator                        Valid Expressions Required of an Input Iterator
 --------------------------------------------------------+-----------------------------------------------
 
 Is copy-constructible, copy-assignable and destructible	            X b(a);
@@ -69,7 +69,7 @@ dereferenceable after the increase.	                           ++a
                                                                    (void)a++
                                                                    *a++
 
-Its value type does not need to be assignable        	           t = u NOT required operaton
+Its value type does not need to be assignable        	           t = u // Is NOT a required operaton
 
 Lvalues are swappable.	                                           swap(a,b)
 
@@ -136,15 +136,13 @@ inline bool operator!=(const fields_input_iterator& lhs, const fields_input_iter
 {
    return !lhs.equal(rhs);
 }
-inline void fields_input_iterator::advance(unsigned int max_mdr_rkey) 
 
+inline void fields_input_iterator::advance(unsigned int max_mdr_rkey) 
 {
    // Advance until predicate is true.
-   auto predicate = [=] (const unsigned& input_mdr)
-                    { 
-                       return input_mdr > max_mdr_rkey;
-                    };
 
-   find_if(std::istream_iterator<mdr_rkey>(*pistr), std::istream_iterator<mdr_rkey>{}, predicate);
+   find_if(std::istream_iterator<mdr_rkey>(*pistr), std::istream_iterator<mdr_rkey>{},\
+           [=] (const unsigned& input_mdr) { return input_mdr > max_mdr_rkey; }\
+           ); 
 }
 #endif 
